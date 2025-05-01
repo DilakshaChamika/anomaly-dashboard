@@ -1,5 +1,7 @@
 "use client";
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import React, { useState } from "react";
 import Papa from "papaparse";
 
@@ -13,7 +15,8 @@ const Dashboard = () => {
     Papa.parse(file, {
       header: true,
       skipEmptyLines: true,
-      complete: (results) => {
+      complete: (results: Papa.ParseResult<any>) => {
+
         const rawData = results.data as any[];
         processCSVData(rawData);
       },
